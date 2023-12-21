@@ -25,7 +25,11 @@ const Navbar = () => {
                         </button>
                     </>
                 ) : (
-                    <button onClick={() => setUser(!user)}>Login</button>
+                    <button onClick={() => {
+                        setUser(!user)
+                    }
+
+                    }>Login</button>
                 )
             }
         </nav>

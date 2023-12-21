@@ -1,13 +1,14 @@
 import Navbar from "../components/Navbar.jsx";
-import {Outlet} from "react-router-dom";
+import {Navigate, Outlet, useNavigate} from "react-router-dom";
 import Dashboard from "../pages/Dashboard.jsx";
 import Home from "../pages/Home.jsx";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {UserContext} from "../context/UserContext.jsx";
 
 const LayoutPrivate = () => {
 
     const {user, setUser} = useContext(UserContext)
+
 
     return (
         user ? (
@@ -16,7 +17,7 @@ const LayoutPrivate = () => {
                 </div>
             ) :
             (
-                <Home></Home>
+                <Navigate to={"/"}></Navigate>
             )
     )
 }
