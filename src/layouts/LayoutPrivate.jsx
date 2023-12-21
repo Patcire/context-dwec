@@ -9,7 +9,8 @@ const LayoutPrivate = () => {
 
     const {user, setUser} = useContext(UserContext)
 
-
+    // con esto controlamos
+    // que solo podamos acceder a la ruta /dashboard di estamos logueados
     return (
         user ? (
                 <div className='container-fluid'>
