@@ -1,18 +1,36 @@
 import {NavLink} from "react-router-dom";
+import {UserContext} from "../context/UserContext.jsx";
+import {useContext} from "react";
 
 
 const Navbar = () => {
 
-    return (
-        <div>
-            <nav className='navbar navbar-dark bg-dark'>
-                <div className='container'>
-                    <NavLink to="/" className="btn btn-outline-primary">Home</NavLink>
-                    <NavLink to="dashboard" className="btn btn-outline-primary">Dashboard</NavLink>
-                </div>
-            </nav>
+    const {user, setUser} = useContext(UserContext)
 
-        </div>
+    const logOut = () => {
+        setUser(false)
+    }
+
+    return (
+
+        <nav className='navbar navbar-dark bg-dark'>
+            <NavLink to={"/"}>Home</NavLink>
+            {
+                user ? (
+                    <>
+                        <NavLink to={"/dashboard"}>Dashboard</NavLink>
+                        <button onClick={() => {
+                            logOut()
+                        }}>Logout
+                        </button>
+                    </>
+                ) : (
+                    <button onClick={() => setUser(!user)}>Login</button>
+                )
+            }
+        </nav>
     )
+
+
 }
 export default Navbar
